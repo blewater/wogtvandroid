@@ -1,0 +1,1 @@
+adb install  D:\WoG\trunk\pWoGTVm\platforms\android\ant-build\WoGTVm-debug-unaligned.apk

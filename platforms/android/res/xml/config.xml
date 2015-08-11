@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="gr.wordofgod.m" version="1.0.508" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="YouTube">
+        <param name="android-package" value="gdg.youtube.YouTube" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <icon height="36" src="images/WOG_icon_36x36.png" width="36" />
+    <icon height="48" src="images/WOG_icon_48x48.png" width="48" />
+    <icon height="72" src="images/WOG_icon_72x72.png" width="72" />
+    <icon height="96" src="images/WOG_icon_96x96.png" width="96" />
+    <icon height="144" src="images/WOG_icon_144x144.png" width="144" />
+    <icon height="192" src="images/WOG_icon_192x192.png" width="192" />
+    <icon height="512" src="images/WOG_icon_512x512.png" width="512" />
+    <icon height="1024" src="images/WOG_icon_1024x1024.png" width="1024" />
+    <name>Mobile WordofGod.TV</name>
+    <description>WoG TV Broadcasting application featuring live and on-demand sermons, messages and testimonies from www.WordofGod.tv</description>
+    <author email="salem8@gmail.com" href="http://www.wordofgod.gr">www.wordofgod.tv</author>
+    <content src="index.min.html" />
+    <access browserOnly="false" origin="*" subdomains="true" />
+    <preference name="loadUrlTimeoutValue" value="300000" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="android-minSdkVersion" value="10" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="fullscreen" value="true" />
+    <preference name="ios-statusbarstyle" value="default" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="EnableViewportScale" value="true" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="prerendered-icon" value="false" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="InAppBrowserStorageEnabled" value="true" />
+    <preference name="TopActivityIndicator" value="white" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+</widget>

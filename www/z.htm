@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>WoG TVm</title>
+    <link href="chui/chui-android.css" rel="stylesheet" />
+    <link href="css/WoGtv.css" rel="stylesheet" />
+    <script src="lib/jquery-2.1.1.min.js"></script>
+    <script src="chui/chui.min.js"></script>
+    <script src="lib/Bacon.min.js"></script>
+    <style type="text/css">
+        div {
+            text-align: center; /* horizontally center */
+        }
+    </style>
+</head>
+<body>
+    <nav id="mainNav">
+    </nav>
+    <article id="playlists" class="current">
+        <!--<section class="fcenter-text">
+            <div class='meta'>
+                <img src='css/images/WOG_icon_36x36.png' alt='WoG'>
+                <p>Mobile WordofGod.gr TV</p>
+                <h4>version 0.9.467</h4>
+                <p>The mobile app brought to you</p>
+                <p>by the</p><p><a href='http://www.wordofgod.gr'>www.WordofGod.gr</a> team</p>
+            </div>
+        </section>-->
+        <section>
+            <div id="aboutCnt">
+                <img src='css/images/WOG_icon_36x36.png' alt='WoG'>
+                <p>Mobile WordofGod.gr TV</p>
+                <h4>version 0.9.467</h4>
+                <p>The mobile app brought to you</p>
+                <p>by the</p>
+                <p><a href='http://www.wordofgod.gr'>www.WordofGod.gr</a> team</p>
+            </div>
+        </section>
+        <script>
+            function vertAlign() {
+                var new_margin = Math.ceil(($(window).height()*.8 - $('#aboutCnt').height()) / 2);
+                $('#aboutCnt').css('margin-top', new_margin + 'px');
+            }
+            vertAlign();
+            $(window).on("orientationchange", function () {
+                vertAlign();
+            });
+            $(window).on("resize", function () {
+                vertAlign();
+            });
+        </script>
+
+    </article>
+    <!-- About page -->
+    <nav>
+    </nav>
+    <article id="about" class="next"></article>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="gr.wordofgod.m" 
+		version="1.0.508" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+		<name>Mobile WordofGod.TV</name>
+		<description>WoG TV Broadcasting application featuring live and on-demand sermons, messages and testimonies from www.WordofGod.tv</description>
+		<author href="http://www.wordofgod.gr" email="salem8@gmail.com">www.wordofgod.tv</author>
+    <content src="index.min.html" />
+    <access origin="*" subdomains="true" browserOnly="false" />
+    <preference name="loadUrlTimeoutValue" value="300000" />
+	<preference name="webviewbounce" value="false" />
+	<preference name="android-minSdkVersion" value="10" />
+	<preference name="android-installLocation" value="auto" />
+	<preference name="DisallowOverscroll" value="true"/>
+	<preference name="fullscreen" value="true" />
+	<preference name="ios-statusbarstyle" value="default" />
+	<preference name="exit-on-suspend" value="false" />
+	<preference name="MediaPlaybackRequiresUserAction" value="false" />
+	<preference name="SuppressesIncrementalRendering" value="false" />
+	<preference name="KeepRunning" value="true"/>
+	<preference name="stay-in-webview" value="false" />
+	<preference name="EnableViewportScale" value="true" />
+	<preference name="AllowInlineMediaPlayback" value="false" />
+	<preference name="prerendered-icon" value="false" />
+	<preference name="detect-data-types" value="true" />
+	<preference name="InAppBrowserStorageEnabled" value="true" />
+	<preference name="TopActivityIndicator" value="white" />
+	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreenDelay" value="10000" />
+	<platform name="android">
+		<icon src="images/WOG_icon_36x36.png" width="36" height="36" />
+		<icon src="images/WOG_icon_48x48.png" width="48" height="48" />
+		<icon src="images/WOG_icon_72x72.png" width="72" height="72" />
+		<icon src="images/WOG_icon_96x96.png" width="96" height="96" />
+		<icon src="images/WOG_icon_144x144.png" width="144" height="144" />
+		<icon src="images/WOG_icon_192x192.png" width="192" height="192" />
+		<icon src="images/WOG_icon_512x512.png" width="512" height="512" />
+		<icon src="images/WOG_icon_1024x1024.png" width="1024" height="1024" />
+	</platform>
+</widget>
