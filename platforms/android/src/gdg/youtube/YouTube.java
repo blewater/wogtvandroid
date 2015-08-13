@@ -115,7 +115,7 @@ public class YouTube extends CordovaPlugin {
         }
 		return success;
     }
-
+	
 	private void doPlayVideo(JSONArray args) throws JSONException {
 		JSONObject arg_object = args.getJSONObject(0);
 		String videoid = arg_object.getString("videoid");

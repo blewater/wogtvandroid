@@ -1,20 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="gr.wordofgod.m" version="1.0.508" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="gr.wordofgod.m" version="1.0.511" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
     <feature name="YouTube">
         <param name="android-package" value="gdg.youtube.YouTube" />
     </feature>
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <icon height="36" src="images/WOG_icon_36x36.png" width="36" />
     <icon height="48" src="images/WOG_icon_48x48.png" width="48" />
@@ -27,26 +28,32 @@
     <name>Mobile WordofGod.TV</name>
     <description>WoG TV Broadcasting application featuring live and on-demand sermons, messages and testimonies from www.WordofGod.tv</description>
     <author email="salem8@gmail.com" href="http://www.wordofgod.gr">www.wordofgod.tv</author>
-    <content src="index.min.html" />
+    <content src="index.html" />
     <access browserOnly="false" origin="*" subdomains="true" />
     <preference name="loadUrlTimeoutValue" value="300000" />
     <preference name="webviewbounce" value="false" />
-    <preference name="android-minSdkVersion" value="10" />
+    <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="fullscreen" value="true" />
     <preference name="ios-statusbarstyle" value="default" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
-    <preference name="SuppressesIncrementalRendering" value="false" />
-    <preference name="KeepRunning" value="true" />
+    <preference name="SuppressesIncrementalRendering" value="True" />
+    <preference name="KeepRunning" value="False" />
     <preference name="stay-in-webview" value="false" />
     <preference name="EnableViewportScale" value="true" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="prerendered-icon" value="false" />
     <preference name="detect-data-types" value="true" />
-    <preference name="InAppBrowserStorageEnabled" value="true" />
+    <preference name="InAppBrowserStorageEnabled" value="False" />
     <preference name="TopActivityIndicator" value="white" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="10000" />
+    <vs:plugin name="cordova-plugin-console" version="1.0.1" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" />
+    <vs:plugin name="cordova-plugin-network-information" version="1.0.1" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" />
+    <vs:plugin name="cordova-plugin-splashscreen" version="2.1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" />
+    <vs:plugin name="cordova-plugin-device" version="1.0.1" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" />
+    <vs:plugin name="cordova-plugin-dialogs" version="1.1.1" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" />
+    <preference name="ShowTitle" value="True" />
 </widget>

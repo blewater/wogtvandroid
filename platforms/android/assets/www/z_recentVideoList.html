@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, minimum-scale=1">
+    <title>WoG TV</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+
+    <!-- The Scripts -->
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="lib/amplify.js"></script>
+    <script src="lib/mustache.js"></script>
+    <script src="js/utils.js"></script>
+</head>
+
+<body>
+
+    <div id="recentVideoListPage" class="type-interior" data-role="page" data-theme="a">
+
+        <div data-role="header">
+            <a data-direction="reverse" href="#langListPage" data-transition="slide" data-role="button" data-icon="back">Languages</a>
+            <h1>Recent Video List</h1>
+        </div>
+
+        <div data-role="content">
+            <div>
+                <a class="video-link ui-btn ui-btn-up-a ui-btn-corner-all ui-shadow ui-btn-inline" data-theme="a" data-inline="true" href="http://www.youtube.com/watch?v={{video.id}}" data-rel="popup" data-role="button">
+                    <span class="ui-btn-inner">
+                        <img src="http://img.youtube.com/vi/MZhBZ1sLAZY/0.jpg" alt="Thumbnail" />
+                    </span>
+                </a>
+            </div>
+<br />
+            <ul id="recentList" data-role="listview">
+
+                <!--                <li>
+                    <figure>
+                        <img src="http://www.athensdeejay.gr/content_images/newadjlogofinal.png">
+                        <figcaption>Live RDJ ios</figcaption>
+                    </figure>
+                </li>-->
+                <li>
+                    <a class="video-link" href="http://www.youtube.com/watch?v=MZhBZ1sLAZY" data-rel="popup" data-role="button" data-theme="a" data-inline="true">
+                        <img alt="Thumbnail" src="http://img.youtube.com/vi/MZhBZ1sLAZY/1.jpg">
+                        <p>Λουκάν ιη' 1-14 (Δημήτρης Κορδορούμπας)</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="video-link" href="http://www.youtube.com/watch?v=C0udr7906RU" data-rel="popup" data-role="button" data-theme="a" data-inline="true">
+                        <img alt="Thumbnail" src="http://img.youtube.com/vi/C0udr7906RU/2.jpg">
+                        <p>Γιατί Πεντηκοστή (Επεισόδιο 1)</p>
+                    </a>
+                </li>
+            </ul>
+            <div data-role="popup" id="video-popup" data-history="false" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+                <a href="#" id='closeButton' data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <iframe id="video-iframe" src="" width="480" height="320" seamless></iframe>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    // Go to #page2 when .back-button is clicked, show animation in reverse,
+    // and do not update the location hash.
+    $(".back-button").on("click", function () {
+        changePage("/index.html", "slide", true, false);
+    });
+
+</script>
+
+</html>

@@ -37,8 +37,9 @@ public class WoGTVm extends CordovaActivity
 		
         super.init();
         // Set by <content src="index.html" /> in config.xml
-        super.loadUrl(Config.getStartUrl());
-        //super.loadUrl("file:///android_asset/www/index.html");
+		// Mario older version commented out
+        //super.loadUrl(Config.getStartUrl());
+		loadUrl(launchUrl);
     }
 }
 
