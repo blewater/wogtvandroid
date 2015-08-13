@@ -1,6 +1,7 @@
 # Gradle builds
-**/gradle/
-**/build/
+.gradle/
+gradle/
+build/
 
 # Ant builds
 ant-built
@@ -18,9 +19,9 @@ ant-gen
 *.class
 
 # Generated files
-**/bin
-**/gen
-**/outputs
+bin/
+gen/
+outputs/
 
 # Local configuration file (sdk path, etc)
 local.properties
