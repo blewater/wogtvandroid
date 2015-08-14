@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="msapplication-tap-highlight" content="no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://m.wordofgod.gr https://*.cloudfront.net">
     <title>WoG TVm</title>
     <script>
         var _rollbarConfig = {
@@ -21,7 +22,7 @@
                 appWoG.loadInit();
             },
             compTask: function compFn() {
-               if (--this.tskCnt === 0) {
+                if (--this.tskCnt === 0) {
                     this.doneTask();
                 }
             }
@@ -47,13 +48,13 @@
             chUIcss = 'chui/chui-win.min.css';
         }
 
-/********************* Define App Server ******************************/
-/* DEBUG Local */       appWoGServer = location.host ? 'http://' + location.host + '/' : ''; // DEBUG
+        /********************* Define App Server ******************************/
+        /* DEBUG Local */       appWoGServer = location.host ? 'http://' + location.host + '/' : ''; // DEBUG
 
-/* WoG App Server */   //appWoGServer = 'https://m.wordofgod.gr/'; // WoG App Server
+        /* WoG App Server */   //appWoGServer = 'https://m.wordofgod.gr/'; // WoG App Server
 
-/* LIVE PRODUCTION */   //appWoGServer = 'https://m.wordofgod.gr/lv/'; // LIVE WoG App Server
-/**********************************************************************/
+        /* LIVE PRODUCTION */   //appWoGServer = 'https://m.wordofgod.gr/lv/'; // LIVE WoG App Server
+        /**********************************************************************/
 
         yepnope([{
 
