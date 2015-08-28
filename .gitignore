@@ -34,3 +34,6 @@ proguard/
 
 # Windows clutter
 Thumbs.db
+
+# Visual Studio
+.vs/
