@@ -22,6 +22,7 @@ ant-gen
 bin/
 gen/
 outputs/
+Debug/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -37,3 +38,4 @@ Thumbs.db
 
 # Visual Studio
 .vs/
+VSBuildInfo.xml

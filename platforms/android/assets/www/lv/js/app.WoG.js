@@ -150,10 +150,10 @@ var appWoG = {
         appWoG.updNetIcon();
 
         // Attach icon events
-        $('#hReload').off('tap').on('tap', function homeRefreshTap() {
+        $('#hReload').off('singletap').on('singletap', function homeRefreshTap() {
             document.location = "index.min.html";
         });
-        $('#homeSearch').off('tap').on('tap', function VidPgRefreshTap() {
+        $('#homeSearch').off('singletap').on('singletap', function VidPgRefreshTap() {
             var so = $('.searchBar');
             if (so.length === 0) {
                 $.UISearch({ id: 'mainSearchBox', articleId: '#playlists', placeholder: 'Αναζήτηση', results: 5 });
@@ -162,7 +162,7 @@ var appWoG = {
                 so.remove();
             }
         });
-        $('.fa-bars').off('tap').on('tap', function backFromBarsPopOver() {
+        $('.fa-bars').off('singletap').on('singletap', function backFromBarsPopOver() {
             var icon = this;
             $.UIPopover({
                 title: 'Περί m.WordofGod.tv',
@@ -174,7 +174,7 @@ var appWoG = {
             });
 
         });
-        $('.fa-sort-alpha-asc').off('tap').on('tap', function backFromSortPopOver() {
+        $('.fa-sort-alpha-asc').off('singletap').on('singletap', function backFromSortPopOver() {
             var icon = this;
             $.UIPopover({
                 title: 'Ταξινόμηση ανά...',
@@ -203,10 +203,10 @@ var appWoG = {
                 appWoG.updNetIcon();
 
                 // add events
-                $('#backToMain').off('tap').on('tap', function homeRefreshTap() {
+                $('#backToMain').off('singletap').on('singletap', function homeRefreshTap() {
                     $.UIGoBackToArticle('#playlists');
                 });
-                $('#vReload').off('tap').on('tap', function VidPgRefreshTap() {
+                $('#vReload').off('singletap').on('singletap', function VidPgRefreshTap() {
                     if (appWoG.netIsOn) {
                         var selPlaylistId = $("#videosList").data('id');
                         appWoG.gapiLoadVideos(selPlaylistId);
@@ -215,7 +215,7 @@ var appWoG = {
 
                     }
                 });
-                $('.fa-bars').off('tap').on('tap', function backFromBarsPopOver() {
+                $('.fa-bars').off('singletap').on('singletap', function backFromBarsPopOver() {
                     var icon = this;
                     $.UIPopover({
                         title: 'Περί m.WordofGod.tv',
@@ -329,7 +329,7 @@ var appWoG = {
         $(elemId).css('margin-top', new_margin + 'px');
     },
     menuPOEvHandler: function () {
-        $('.popover').on('tap', function (e) {
+        $('.popover').on('singletap', function (e) {
             var li, opt;
             if (e.target.nodeName === 'LI') {
                 opt = e.target.data('opt');
@@ -348,7 +348,7 @@ var appWoG = {
 
                     section.append("<div id='aboutDiv' class='hcenter'><img src='css/images/WOG_icon_36x36.png' alt='WoG'><h6>version 1.0.508</h6><p>Τετάρτη 20 Μαίου 2015</p><h6>Το www.WordofGod.gr τώρα και στις κινητές συσκευές.</h6></div>");
                     
-                    $('.sheet').on('tap', function () {
+                    $('.sheet').on('singletap', function () {
                         $.UIHideSheet();
                     });
 
@@ -563,7 +563,7 @@ var appWoG = {
 
     setTouchPlayLiveEvent: function () {
         var that = this;
-        $('.liveFlexText').on('tap', function liveVideoDivTap(e) {
+        $('.liveFlexText').on('singletap', function liveVideoDivTap(e) {
             if (that.netIsOn) {
                 that.playLiveEvent();
             }

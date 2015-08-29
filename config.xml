@@ -3,9 +3,9 @@
   <name>Mobile WordofGod.TV</name>
   <description>WoG TV Broadcasting application featuring live and on-demand sermons, messages and testimonies from www.WordofGod.tv</description>
   <author href="http://www.wordofgod.gr" email="salem8@gmail.com">www.wordofgod.tv</author>
-  <content src="index.html" />
+  <content src="index.min.html" />
   <access origin="*" subdomains="true" browserOnly="false" />
-  <allow-navigation href="*" /> 
+  <allow-navigation href="*" />
   <preference name="loadUrlTimeoutValue" value="300000" />
   <preference name="webviewbounce" value="false" />
   <preference name="android-minSdkVersion" value="14" />
