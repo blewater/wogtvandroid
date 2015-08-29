@@ -152,7 +152,7 @@ var appWoG = {
 
         // Attach icon events
         $('#hReload').off('singletap').on('singletap', function homeRefreshTap() {
-            document.location = "index.min.html";
+            document.location = "index.html";
         });
         $('#homeSearch').off('singletap').on('singletap', function VidPgRefreshTap() {
             var so = $('.searchBar');
@@ -212,7 +212,7 @@ var appWoG = {
                         var selPlaylistId = $("#videosList").data('id');
                         appWoG.gapiLoadVideos(selPlaylistId);
                     } else {
-                        document.location = "index.min.html";
+                        document.location = "index.html";
 
                     }
                 });
@@ -416,7 +416,7 @@ var appWoG = {
         } else {
             this.netIsOn = false;
             this.showNoNetPopup(true, false, function rebootFunc() {
-                document.location = "index.min.html";
+                document.location = "index.html";
             });
         }
         this.updNetIcon();
@@ -440,7 +440,7 @@ var appWoG = {
     onOnline: function() {
         if (appWoG.getLiveYtVidID() === null) {
             //if it was offline and came back in reload app to ensure correct live id
-            document.location = "index.min.html";
+            document.location = "index.html";
         }
         appWoG.netIsOn = true;
         appWoG.updNetIcon();
@@ -499,7 +499,7 @@ var appWoG = {
 
                 Rollbar.info('Null live id: ' + ytID + ' in phA_playYoutube...rebooting');
                 // Reboot
-                document.location = "index.min.html";
+                document.location = "index.html";
 
             } else {
                 Rollbar.info('Null id: ' + ytID + ' phA_playYoutube');
@@ -530,7 +530,7 @@ var appWoG = {
             // Offline Error when pressed on live Event, reboot app to get the live event Id if user says they connected
             if (isLiveStream) {
                 appWoG.showNoNetPopup(false, isLiveStream, function rebootFunc() {
-                    document.location = "index.min.html";
+                    document.location = "index.html";
                 });
             } else {
                 // Offline Error when pressed on a on demand Event, play the event if user says they connected
