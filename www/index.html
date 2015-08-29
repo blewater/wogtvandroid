@@ -36,7 +36,6 @@
         };
     </script>
     <script src="https://apis.google.com/js/client.js?onload=ynit"></script>
-    <script src="lib/yepnope.1.5.4-min.js"></script>
     <script>
         var chUIcss = 'chui/chui-android.min.css'; // default android
         ua = navigator.userAgent.toLowerCase();
@@ -47,7 +46,16 @@
         } else if (ua.indexOf('trident') !== -1) {
             chUIcss = 'chui/chui-win.min.css';
         }
-
+        // Load it up
+        var fileref = document.createElement("link");
+        fileref.rel = "stylesheet";
+        fileref.type = "text/css";
+        fileref.href = chUIcss;
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+    </script>
+    <link href="css/bundle_WoGstyle.css" rel="stylesheet" />
+    <script src="js/bundle_WoGjs.js"></script>
+    <script>
         /********************* Define App Server ******************************/
         /* DEBUG Local */       appWoGServer = location.host ? 'http://' + location.host + '/' : ''; // DEBUG
 
@@ -55,34 +63,12 @@
 
         /* LIVE PRODUCTION */   //appWoGServer = 'https://m.wordofgod.gr/lv/'; // LIVE WoG App Server
         /**********************************************************************/
-
-        yepnope([{
-
-            load: [chUIcss, "css/jqm.1.4.grid.min.css", appWoGServer + "css/WoGtv.min.css", "lib/jquery-2.1.1.min.js", "lib/jquery.fittext.min.js", "chui/chui.min.js", "lib/Bacon.min.js", "lib/amplify.store.min.js", "lib/ramda.min.js"
-                , appWoGServer + "js/app.WoG.js", "css/font-awesome.min.css", "css/flag-icon.min.css"],
-            callback: {
-                "jquery-2.1.1.min.js": function () {
-                    !function (a, b, c) { var d = b.Rollbar; if (d) { var e = "0.0.8"; d.configure({ notifier: { plugins: { jquery: { version: e } } } }); var f = function (a) { d.error(a), b.console && b.console.log(a.message + " [reported to Rollbar]") }; a(c).ajaxError(function (a, b, c, e) { var f = b.status, g = c.url, h = c.type; if (f) { var i; e && e.hasOwnProperty("stack") && (i = e); var j = { status: f, url: g, type: h, isAjax: !0 }; d.warning("jQuery ajax error for " + h, j, i) } }); var g = a.fn.ready; a.fn.ready = function (a) { return g.call(this, function (b) { try { a(b) } catch (c) { f(c) } }) }; var h = a.event.add; a.event.add = function (b, c, d, e, g) { var i, j = function (a) { return function () { try { return a.apply(this, arguments) } catch (b) { f(b) } } }; return d.handler ? (i = d.handler, d.handler = j(d.handler)) : (i = d, d = j(d)), d.guid = i.guid ? i.guid : i.guid = a.guid++, h.call(this, b, c, d, e, g) } } }(jQuery, window, document);
-                },
-                "app.WoG.min.js": function (url, res, key) {
-
-                    // Did appWoG load from the app server?
-                    if (typeof appWoG === "undefined") {
-                        yepnope({
-                            load: ['css/WoGtv.min.css', "js/app.WoG.min.js"],
-                            complete: function () {
-                                appWoG.init(); // Local appWoG.js after 10 seconds
-                            }
-                        });
-                    } else { // Yes let's get started
-                        appWoG.init();
-                    }
-                }
+        $.getScript(appWoGServer + "js/app.WoG.js", function () {
+            appWoG.init();
+            if (!document.URL.match(/^https?:/)) {
+                $.getScript('cordova.js');
             }
-        }, {
-            test: !document.URL.match(/^https?:/),
-            yep: 'cordova.js'
-        }]);
+        });
     </script>
 </head>
 <body>
