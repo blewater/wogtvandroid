@@ -1,8 +1,4 @@
-﻿(function () {
-    'use strict';
-}());
-
-var appWoG = {
+﻿var appWoG = {
     CACHE_DUR: 86400000, // 24 * 3600 * 1000 (24 hours in millies)
 
     //---- Constructor

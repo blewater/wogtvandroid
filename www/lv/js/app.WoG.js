@@ -1,13 +1,8 @@
-﻿(function () {
-    'use strict';
-}());
-
-var appWoG = {
-
+﻿var appWoG = {
     CACHE_DUR: 86400000, // 24 * 3600 * 1000 (24 hours in millies)
 
     //---- Constructor
-    init: function () {
+    init: function() {
 
         // Init Error Handling first
         var cloudloggererrorhandler = window.onerror;
@@ -78,13 +73,14 @@ var appWoG = {
      * htmlFile: Html filename wout the .min.html extension
      * contentHandler: Content handler function
      */
-    loadHtmlFragment: function (htmlFile, contentHandler) {
+    loadHtmlFragment: function(htmlFile, contentHandler) {
         htmlFile += '.min.html';
         this.bacon.fromPromise($.ajax({
-            url: appWoGServer + htmlFile, cache: false
-        }))
-        .mapError(this.getLocalFile, htmlFile, contentHandler)
-        .onValue(contentHandler);
+                url: appWoGServer + htmlFile,
+                cache: false
+            }))
+            .mapError(this.getLocalFile, htmlFile, contentHandler)
+            .onValue(contentHandler);
     },
     /**
      * Loads an (html?) and processes it.
@@ -94,7 +90,7 @@ var appWoG = {
      * localFilename: local version of (html?) file.
      * contentHandler: Content handler function
      */
-    getLocalFile: function (localFilename, contentHandler) {
+    getLocalFile: function(localFilename, contentHandler) {
         $.get(localFilename, function doneLocFrag(content) {
             contentHandler(content);
         });
@@ -108,20 +104,21 @@ var appWoG = {
      * isTempl: Whether we should objectify as a template
      * returns: objectified template as Bacon property
      */
-    getHtmlAsProp: function (htmlFilename, isTempl) {
+    getHtmlAsProp: function(htmlFilename, isTempl) {
         htmlFilename += '.min.html';
         var that = this;
         return Bacon.fromPromise($.ajax({
-            url: appWoGServer + htmlFilename, cache: false
-        }))
-                .flatMapError(function () {
-                    return that.getLocalFileAsProm(htmlFilename);
-                })
-                .map(function (cont) {
-                    // objectify if it is a template
-                    return isTempl ? $.template(cont) : cont;
-                })
-                .toProperty();
+                url: appWoGServer + htmlFilename,
+                cache: false
+            }))
+            .flatMapError(function() {
+                return that.getLocalFileAsProm(htmlFilename);
+            })
+            .map(function(cont) {
+                // objectify if it is a template
+                return isTempl ? $.template(cont) : cont;
+            })
+            .toProperty();
     },
     /**
      * Loads an html file with a bacon promise.
@@ -132,7 +129,7 @@ var appWoG = {
      * localFilename: local template html filename.
      * returns Bacon promise stream of local template
      */
-    getLocalFileAsProm: function (localFilename) {
+    getLocalFileAsProm: function(localFilename) {
         var msg = "File failed to load from m.WoG.gr. Opted for the local instead: " + localFilename;
         Rollbar.info(msg);
         console.log(msg);
@@ -142,7 +139,7 @@ var appWoG = {
 	 * Callback when nav header loads up.
 	 * Add html & icon events
 	 */
-    addMNavHeaderFrag: function (html) {
+    addMNavHeaderFrag: function(html) {
         //Add icons
         $('#mainNav').append(html);
 
@@ -192,11 +189,11 @@ var appWoG = {
 	 * Callback when nav header loads up.
 	 * Add html & icon events
 	 */
-    addVNavHeaderFrag: function () {
+    addVNavHeaderFrag: function() {
         //Add icons
         var navHeader = $('#videosNav');
         if (navHeader.html().indexOf('table') === -1) {
-            this.vidNavFragBcProp.onValue(function (navHtml) {
+            this.vidNavFragBcProp.onValue(function(navHtml) {
                 navHeader.append(navHtml);
 
                 //update status
@@ -231,11 +228,11 @@ var appWoG = {
             appWoG.updNetIcon();
         }
     },
-    addMainListFrag: function (html) {
+    addMainListFrag: function(html) {
         $('#secPlaylists').prepend(html);
 
         //Give time for the UI to finish more urgent tasks...
-        setTimeout(function () { $(".liveFlexText").fitText(1.1); }, 0);
+        setTimeout(function() { $(".liveFlexText").fitText(1.1); }, 0);
 
         // Touch event for entering playlists
         appWoG.setTouchPlayLiveEvent();
@@ -259,7 +256,7 @@ var appWoG = {
         el: "UCc3hweSOwmGb6hdQrPFc_cw", //"wordofgodgreece",
         en: "wordofgodenglish"
     },
-    getYoutubeLangChannel: function () {
+    getYoutubeLangChannel: function() {
 
         // Recommended way to get a channel's listings by id
         return this.youtubeLangChannel[this.lang];
@@ -269,13 +266,13 @@ var appWoG = {
         videos: "published" //default
     },
 
-    getListOrderby: function (list) { return this.listsOrderby[list]; },
-    setListOrderby: function (list, newOrderby) { this.listsOrderby[list] = newOrderby; },
+    getListOrderby: function(list) { return this.listsOrderby[list]; },
+    setListOrderby: function(list, newOrderby) { this.listsOrderby[list] = newOrderby; },
 
     /**
 	  * Create the html only youtube url
 	 **/
-    getYTUrl: function (ytVideoId) {
+    getYTUrl: function(ytVideoId) {
         var ytUrl = '';
         if (ytVideoId !== void 0) {
             ytUrl = 'http://www.youtube.com/embed/' + ytVideoId + this.ytPlayerParams;
@@ -299,9 +296,9 @@ var appWoG = {
     //---- Events
 
     // Function for leaving navigateBack:
-    sortPOEvHandler: function (list) {
+    sortPOEvHandler: function(list) {
 
-        $('.popover').on('singletap', function (e) {
+        $('.popover').on('singletap', function(e) {
 
             if (appWoG.netIsOn) {
                 var li, opt;
@@ -324,12 +321,12 @@ var appWoG = {
      * Vert align element.
      * elemId: element string name css style with '#' in front.
      */
-    vertAlign: function (elemId) {
+    vertAlign: function(elemId) {
         var new_margin = Math.ceil(($(window).height() * 0.8 - $(elemId).height()) / 2);
         $(elemId).css('margin-top', new_margin + 'px');
     },
-    menuPOEvHandler: function () {
-        $('.popover').on('singletap', function (e) {
+    menuPOEvHandler: function() {
+        $('.popover').on('singletap', function(e) {
             var li, opt;
             if (e.target.nodeName === 'LI') {
                 opt = e.target.data('opt');
@@ -347,12 +344,12 @@ var appWoG = {
                 if (section.html().indexOf('aboutDiv') === -1) {
 
                     section.append("<div id='aboutDiv' class='hcenter'><img src='css/images/WOG_icon_36x36.png' alt='WoG'><h6>version 1.0.508</h6><p>Τετάρτη 20 Μαίου 2015</p><h6>Το www.WordofGod.gr τώρα και στις κινητές συσκευές.</h6></div>");
-                    
-                    $('.sheet').on('singletap', function () {
+
+                    $('.sheet').on('singletap', function() {
                         $.UIHideSheet();
                     });
 
-                    $(window).on('resize', function () { appWoG.vertAlign('#aboutDiv'); });
+                    $(window).on('resize', function() { appWoG.vertAlign('#aboutDiv'); });
                 }
 
                 $.UIShowSheet("#abSheet");
@@ -373,7 +370,7 @@ var appWoG = {
         });
     },
 
-    navEnter: function (topic, id) {
+    navEnter: function(topic, id) {
 
         if (id === 'videos') {
 
@@ -381,18 +378,18 @@ var appWoG = {
         }
 
     },
-    navBackLeave: function (topic, id) {
+    navBackLeave: function(topic, id) {
         if (!this.isNative) {
             switch (id) {
-                case 'ytIFrmArticle':
-                    $("#video-iframe").attr("src", "");
+            case 'ytIFrmArticle':
+                $("#video-iframe").attr("src", "");
             }
         }
     },
-    updNetIcon: function () {
+    updNetIcon: function() {
         this.netIsOn ? $('.fa-ban').removeClass('fa-ban') : $('.ban-icon').addClass('fa-ban');
     },
-    showNoNetPopup: function (introPrompt, isLiveStream, positActionFunc) {
+    showNoNetPopup: function(introPrompt, isLiveStream, positActionFunc) {
         var mainPrompt = 'Δεν έχετε δυκτυακή σύνδεση! Παρακαλώ συνδεθείτε και πατήστε Ok';
 
         $.UIPopup({
@@ -405,7 +402,7 @@ var appWoG = {
         });
 
     },
-    checkConnection: function () {
+    checkConnection: function() {
         var networkState = navigator.connection.type;
 
         if (networkState !== Connection.NONE) {
@@ -432,11 +429,11 @@ var appWoG = {
 
         console.log('Connection type: ' + states[networkState]);
     },
-    onOffline: function () {
+    onOffline: function() {
         appWoG.netIsOn = false;
         appWoG.updNetIcon();
     },
-    onOnline: function () {
+    onOnline: function() {
         if (appWoG.getLiveYtVidID() === null) {
             //if it was offline and came back in reload app to ensure correct live id
             document.location = "index.html";
@@ -444,7 +441,7 @@ var appWoG = {
         appWoG.netIsOn = true;
         appWoG.updNetIcon();
     },
-    phonegapInit: function () {
+    phonegapInit: function() {
         navigator.splashscreen.hide();
 
         this.checkConnection();
@@ -453,13 +450,13 @@ var appWoG = {
         document.addEventListener("online", this.onOnline, false);
 
         if (navigator.notification) { // Override default HTML alert with native dialog
-            window.alert = function (message) {
+            window.alert = function(message) {
                 navigator.notification.alert(
-					message,    // message
-					null,       // callback
-					"WoGTVm", // title
-					'OK'        // buttonName
-				);
+                    message, // message
+                    null, // callback
+                    "WoGTVm", // title
+                    'OK' // buttonName
+                );
             };
         }
 
@@ -468,14 +465,14 @@ var appWoG = {
         //alert("deviceReady received!, appWoG.isNative: " + appWoG.isNative);
     },
 
-    showNoYtPopup: function (isLiveStream, ytID) {
+    showNoYtPopup: function(isLiveStream, ytID) {
         $.UIPopup({
             id: "noYtPopup",
             title: 'Η εφαρμογή YouTube δεν είναι εγκατεστημένη',
             message: 'Παρακαλώ εγκαταστήσετε την εφαρμογή YouTube από το Google playstore για τη θέαση του WordofGod Video.',
             cancelButton: 'ΑΡΓΟΤΕΡΑ',
             continueButton: 'ΟΚ ΤΗΝ ΕΓΚΑΤΕΣΤΗΣΑ',
-            callback: function () {
+            callback: function() {
                 if (!isLiveStream) {
                     appWoG.phA_playYoutube(isLiveStream, ytID);
                 }
@@ -485,7 +482,7 @@ var appWoG = {
     /**
 	  * Phonegap Android version of play youtube
 	  */
-    phA_playYoutube: function (isLiveStream, ytID) {
+    phA_playYoutube: function(isLiveStream, ytID) {
         //console.log('in phA_playYoutube(), ytID: ' + ytID + ', window.Youtube: ' + youtube + ', YouTube: ' + YouTube + ' is ' + (youtube === void 0 ? "Undef" : "Def"));
         //navigator.notification.alert('youtube: ' + youtube);
 
@@ -493,7 +490,7 @@ var appWoG = {
         if (ytID === void 0 || ytID === null) {
 
             // Null id. Trouble if in online mode
-            
+
             if (isLiveStream) {
 
                 Rollbar.info('Null live id: ' + ytID + ' in phA_playYoutube...rebooting');
@@ -509,7 +506,7 @@ var appWoG = {
 
         if (this.netIsOn) {
 
-            youtube.playVideo(ytID, function phA_playYoutubeSucc() { },
+            youtube.playVideo(ytID, function phA_playYoutubeSucc() {},
                 function phA_playYoutubeErr(err) {
 
                     var errorMsg = 'window.plugins.youtube.playVideo() failed: (' + err + ') to play youtube URL: ' + ytID;
@@ -523,7 +520,7 @@ var appWoG = {
                 }
             );
         }
-            // Offline error
+        // Offline error
         else {
 
             // Offline Error when pressed on live Event, reboot app to get the live event Id if user says they connected
@@ -540,7 +537,7 @@ var appWoG = {
         }
     },
 
-    getYouTubeID: function (url) {
+    getYouTubeID: function(url) {
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
         var match = url.match(regExp);
         if (match && match[7].length === 11) {
@@ -553,7 +550,7 @@ var appWoG = {
 	  * Show the busy indicator on the nan or other div
 	  * Grayish in color
 	  */
-    setBusySvg: function (elemName) {
+    setBusySvg: function(elemName) {
 
         var elem = $(elemName);
         elem.UIBusy({ color: '#444', size: 60 });
@@ -561,7 +558,7 @@ var appWoG = {
 
     },
 
-    setTouchPlayLiveEvent: function () {
+    setTouchPlayLiveEvent: function() {
         var that = this;
         $('.liveFlexText').on('singletap', function liveVideoDivTap(e) {
             if (that.netIsOn) {
@@ -574,7 +571,7 @@ var appWoG = {
 
 
     // On Index any playlist "click", singletap event by delegate
-    setTouchPlaylistEvent: function () {
+    setTouchPlaylistEvent: function() {
 
         var that = this;
         $('#playlistsList').on("singletap", "li", function setSelectaPlaylistEventTap() {
@@ -606,7 +603,7 @@ var appWoG = {
     },
 
     // On any videos "click", tap event by delegate
-    setVideoTapPlayEvent: function () {
+    setVideoTapPlayEvent: function() {
 
         var that = this;
         $('#videosList').on("singletap", "div", function setPLVideoTapPlayEventTap(e) {
@@ -615,8 +612,8 @@ var appWoG = {
             e.stopPropagation();
 
             var ydiv = $(this);
-            var ytTitle = ydiv.find('>').data('title');
-            var ytID = ydiv.find('>').data('ytid');
+            var ytTitle = ydiv.find(' > ').data('title');
+            var ytID = ydiv.find(' > ').data('ytid');
 
             that.showYT(false, ytTitle, ytID);
         });
@@ -625,7 +622,7 @@ var appWoG = {
     /**
      * Start video player
      */
-    showYT: function (isLiveStream, ytTitle, ytID) {
+    showYT: function(isLiveStream, ytTitle, ytID) {
 
         if (!this.isNative) {
             var urlYouTube = this.getYTUrl(ytID);
@@ -650,14 +647,14 @@ var appWoG = {
 	  * 1. Get latest cached Youtube WordOfGod active live event (initially hard coded)
 	  * 2. if not, Get from storage
 	  */
-    getLiveYtVidID: function () {
+    getLiveYtVidID: function() {
 
         var liveYtVidID = this.cachedLiveLangYtUrl[this.lang].vidID;
 
         return liveYtVidID;
     },
 
-    setLiveYtUrl: function (ytID) {
+    setLiveYtUrl: function(ytID) {
         // Caching entry for current language
         if (ytID !== null) {
             this.cachedLiveLangYtUrl[this.lang].vidID = ytID;
@@ -668,7 +665,7 @@ var appWoG = {
     /**
 	  * Display iframe and play the active live event
 	  */
-    playLiveEvent: function () {
+    playLiveEvent: function() {
         var liveYtVidID = this.getLiveYtVidID();
 
         if (liveYtVidID) {
@@ -679,13 +676,13 @@ var appWoG = {
      * Load first data upon module initialization
      * to be called from user of module
      */
-    loadInit: function () {
+    loadInit: function() {
         if (gapi.client.youtube) {
             this.gapiLoadLiveEvent();
             this.gapiLoadPlaylists(this.getListOrderby("playlists"));
         }
     },
-    gapiLoadLiveEvent: function () {
+    gapiLoadLiveEvent: function() {
         var that = this;
         var reqOptions = {
             channelId: this.getYoutubeLangChannel(),
@@ -696,17 +693,17 @@ var appWoG = {
             maxResults: 1
         };
         this.gapi.client.youtube.search.list(reqOptions)
-		.then(function gapiLoadLiveEventResp(response) {
-		    var liveItems = response.result.items;
-		    if (liveItems && liveItems[0] && liveItems[0].id && liveItems[0].id.videoId) {
-		        that.setLiveYtUrl(liveItems[0].id.videoId);
-		    }
-		});
+            .then(function gapiLoadLiveEventResp(response) {
+                var liveItems = response.result.items;
+                if (liveItems && liveItems[0] && liveItems[0].id && liveItems[0].id.videoId) {
+                    that.setLiveYtUrl(liveItems[0].id.videoId);
+                }
+            });
     },
     /*
 	 * Process Index playlists gapi qry results with loaded html template
 	 */
-    procPlaylistsResp: function (pListTemp, response) {
+    procPlaylistsResp: function(pListTemp, response) {
         if (response && !('error' in response)) {
             var playlistsList = $("#playlistsList");
             var playlistData = response.result.items;
@@ -726,7 +723,7 @@ var appWoG = {
         }
         $('.busy').remove();
     },
-    gapiLoadPlaylists: function (sortVal) {
+    gapiLoadPlaylists: function(sortVal) {
 
         this.setBusySvg('#mainNav');
 
@@ -736,46 +733,46 @@ var appWoG = {
         if (!this.cachedPL.resp || !this.cachedPL.ts || !this.cachedPL.orderBy || this.cachedPL.orderBy !== sortVal || Date.now() - this.cachedPL.ts > this.CACHE_DUR) {
 
             this.gapi.client.youtube.search.list({
-                channelId: this.getYoutubeLangChannel(),
-                part: 'id,snippet',
-                type: 'playlist',
-                order: sortVal,
-                maxResults: 50
-            })
-			.then(function (res) {
-			    return res.result.items.map(function (item) {
-			        return item.id.playlistId;
-			    });
-			})
-			.then(function (plIds) {
-			    return gapi.client.youtube.playlists.list({
-			        id: plIds.join(','),
-			        part: 'id,snippet,contentDetails',
-			        type: 'playlist',
-			        maxResults: 50
-			    });
-			})
-			.then(function (resp) {
-			    // Synchronize on playlists template + gapi playlists results;
-			    that.plistsTempBcProp.onValue(function (plistsTemp) {
-			        that.procPlaylistsResp(plistsTemp, resp);
-			    });
+                    channelId: this.getYoutubeLangChannel(),
+                    part: 'id,snippet',
+                    type: 'playlist',
+                    order: sortVal,
+                    maxResults: 50
+                })
+                .then(function(res) {
+                    return res.result.items.map(function(item) {
+                        return item.id.playlistId;
+                    });
+                })
+                .then(function(plIds) {
+                    return gapi.client.youtube.playlists.list({
+                        id: plIds.join(','),
+                        part: 'id,snippet,contentDetails',
+                        type: 'playlist',
+                        maxResults: 50
+                    });
+                })
+                .then(function(resp) {
+                    // Synchronize on playlists template + gapi playlists results;
+                    that.plistsTempBcProp.onValue(function(plistsTemp) {
+                        that.procPlaylistsResp(plistsTemp, resp);
+                    });
 
-			    // Cache results
-			    that.cachedPL = { ts: new Date(), resp: resp, orderBy: sortVal };
+                    // Cache results
+                    that.cachedPL = { ts: new Date(), resp: resp, orderBy: sortVal };
 
-			}, function (err) {
-			    Rollbar.error(err.result);
-			});
+                }, function(err) {
+                    Rollbar.error(err.result);
+                });
 
         } else {
-            this.plistsTempBcProp.onValue(function (plistsTemp) {
+            this.plistsTempBcProp.onValue(function(plistsTemp) {
                 that.procPlaylistsResp(plistsTemp, that.cachedPL.resp);
             });
         }
 
     },
-    gapiLoadVideos: function (userPlaylistId) {
+    gapiLoadVideos: function(userPlaylistId) {
 
         this.setBusySvg('#videosNav');
 
@@ -789,34 +786,33 @@ var appWoG = {
 
         // Gapi get video id for pl 2. Get full detail for videos including stats views
         this.gapi.client.youtube.playlistItems.list({
-            playlistId: userPlaylistId,
-            part: 'snippet',
-            maxResults: 50
-        })
-        .then(function (res) {
-            return res.result.items.map(function (item) {
-                return item.snippet.resourceId.videoId;
-            });
-        })
-        .then(function (videoIds) {
-            return this.gapi.client.youtube.videos.list({
-                id: videoIds.join(','),
-                part: 'id,snippet,statistics,contentDetails',
+                playlistId: userPlaylistId,
+                part: 'snippet',
                 maxResults: 50
+            })
+            .then(function(res) {
+                return res.result.items.map(function(item) {
+                    return item.snippet.resourceId.videoId;
+                });
+            })
+            .then(function(videoIds) {
+                return this.gapi.client.youtube.videos.list({
+                    id: videoIds.join(','),
+                    part: 'id,snippet,statistics,contentDetails',
+                    maxResults: 50
+                });
+            })
+            .then(function(resp) {
+                // Synchronize on video template + gapi video list;
+                that.videosListTempBcProp.onValue(function(vidListTempl) {
+                    that.procVideosExtraInfoResp(vidListTempl, resp);
+                });
+            }, function(err) {
+                Rollbar.error(err.result);
             });
-        })
-        .then(function (resp) {
-            // Synchronize on video template + gapi video list;
-            that.videosListTempBcProp.onValue(function (vidListTempl) {
-                that.procVideosExtraInfoResp(vidListTempl, resp);
-            });
-        }
-        , function (err) {
-            Rollbar.error(err.result);
-        });
     },
 
-    parseVideoTemp: function (parsedVidTemp, videoData, cntVideos) {
+    parseVideoTemp: function(parsedVidTemp, videoData, cntVideos) {
 
         /* get template for creating listview */
         var regxDescOmitFileName = /\n*FN\:\w+\.\w+\s*/g;
@@ -831,8 +827,7 @@ var appWoG = {
             if (row === 0) {
                 appendHtml += '<div class="ui-block-a">' + parsedVidTemp(videoData[i]) + '</div>';
                 row++;
-            }
-            else {
+            } else {
                 appendHtml += '<div class="ui-block-b">' + parsedVidTemp(videoData[i]) + '</div>';
                 row = 0;
             }
@@ -845,7 +840,7 @@ var appWoG = {
     /*
 	 * Process gapi playlist video extra info Qry resuls with loaded template
 	 */
-    procVideosExtraInfoResp: function (vidListTemp, response) {
+    procVideosExtraInfoResp: function(vidListTemp, response) {
         if (response && !('error' in response)) {
 
             // render grid template with data
@@ -869,7 +864,7 @@ var appWoG = {
         $('.busy').remove();
     },
     /// Convert from Yt format and pad numbers
-    convFromIso8601Dur: function (duration) {
+    convFromIso8601Dur: function(duration) {
         var a = duration.match(/\d+/g);
         var r = '';
         $.each(a, function convFromIso8601DurEach(idx, num) {

@@ -39,3 +39,4 @@ Thumbs.db
 # Visual Studio
 .vs/
 VSBuildInfo.xml
+.settings/

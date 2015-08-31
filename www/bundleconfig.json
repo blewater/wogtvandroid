@@ -14,6 +14,20 @@
     "sourceMaps": false
   },
   {
+    "outputFileName": "lv/css/bundle_WoGstyle.css",
+    "inputFiles": [
+      "css/flag-icon.min.css",
+      "css/font-awesome.min.css",
+      "css/jqm.1.4.grid.min.css",
+      "css/WoGtv.min.css"
+    ],
+    "minify": {
+      "enabled": true
+    },
+    "includeInProject": true,
+    "sourceMaps": false
+  },
+  {
     "outputFileName": "js/bundle_WoGjs.js",
     "inputFiles": [
       "lib/jquery-2.1.1.min.js",
@@ -23,9 +37,56 @@
       "lib/amplify.store.min.js"
     ],
     "minify": {
-      "enabled": true
+      "enabled": false
     },
     "includeInProject": true,
-    "sourceMaps": true
+    "sourceMaps": false
+  },
+  {
+    "outputFileName": "js/bundle_WoGpApp.js",
+    "inputFiles": [
+      "lib/jquery-2.1.1.min.js",
+      "chui/chui.js",
+      "lib/Bacon.js",
+      "lib/jquery.fittext.js",
+      "lib/amplify.store.min.js",
+      "js/app.WoG.js"
+    ],
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": true,
+    "sourceMaps": false
+  },
+  {
+    "outputFileName": "lv/js/bundle_WoGjs.js",
+    "inputFiles": [
+      "lib/jquery-2.1.1.min.js",
+      "chui/chui.js",
+      "lib/Bacon.js",
+      "lib/jquery.fittext.js",
+      "lib/amplify.store.min.js"
+    ],
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": true,
+    "sourceMaps": false
+  },
+  {
+    "outputFileName": "lv/js/bundle_WoGpApp.js",
+    "inputFiles": [
+      "lib/jquery-2.1.1.min.js",
+      "chui/chui.js",
+      "lib/Bacon.js",
+      "lib/jquery.fittext.js",
+      "lib/amplify.store.min.js",
+      "js/app.WoG.js"
+    ],
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": true,
+    "sourceMaps": false
   }
 ]
