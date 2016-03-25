@@ -4,60 +4,10 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {
-            "res/xml/config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"YouTube\"><param name=\"android-package\" value=\"gdg.youtube.YouTube\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
-            "AndroidManifest.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
-                        }
-                    ]
-                }
-            }
-        }
+        "files": {}
     },
     "installed_plugins": {
-        "gdg.youtube": {
-            "PACKAGE_NAME": "gr.wordofgod.m"
-        },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "gr.wordofgod.m"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "gr.wordofgod.m"
-        },
-        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "gr.wordofgod.m"
         },
         "cordova-plugin-device": {
@@ -66,9 +16,19 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "gr.wordofgod.m"
         },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "gr.wordofgod.m"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "gr.wordofgod.m"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "gr.wordofgod.m"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "gdg.youtube": {
+            "PACKAGE_NAME": "gr.wordofgod.m"
+        }
+    }
 }
