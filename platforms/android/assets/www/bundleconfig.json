@@ -43,7 +43,7 @@
     "sourceMaps": false
   },
   {
-    "outputFileName": "js/bundle_WoGpApp.js",
+    "outputFileName": "js/bundle_WoGApp.js",
     "inputFiles": [
       "lib/jquery-2.1.1.min.js",
       "chui/chui.js",
@@ -74,7 +74,7 @@
     "sourceMaps": false
   },
   {
-    "outputFileName": "lv/js/bundle_WoGpApp.js",
+    "outputFileName": "lv/js/bundle_WoGApp.js",
     "inputFiles": [
       "lib/jquery-2.1.1.min.js",
       "chui/chui.js",

@@ -343,7 +343,7 @@
 
                 if (section.html().indexOf('aboutDiv') === -1) {
 
-                    section.append("<div id='aboutDiv' class='hcenter'><img src='css/images/WOG_icon_36x36.png' alt='WoG'><h6>version 1.0.508</h6><p>Τετάρτη 20 Μαίου 2015</p><h6>Το www.WordofGod.gr τώρα και στις κινητές συσκευές.</h6></div>");
+                    section.append("<div id='aboutDiv' class='hcenter'><img src='css/images/WOG_icon_36x36.png' alt='WoG'><h6>version 1.0.536</h6><p>Παρασκευή 25 Μαρτίου 2016</p><h6>Το www.WordofGod.gr τώρα και στις κινητές συσκευές.</h6></div>");
 
                     $('.sheet').on('singletap', function() {
                         $.UIHideSheet();

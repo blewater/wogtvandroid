@@ -23,6 +23,7 @@ bin/
 gen/
 outputs/
 Debug/
+platforms/android/res/
 
 # Local configuration file (sdk path, etc)
 local.properties
