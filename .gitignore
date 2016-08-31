@@ -23,7 +23,9 @@ bin/
 gen/
 outputs/
 Debug/
-platforms/android/res/
+platforms/android/
+# The packages folder can be ignored because of Package Restore
+**/packages/*
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -41,3 +43,4 @@ Thumbs.db
 .vs/
 VSBuildInfo.xml
 .settings/
+*.user
